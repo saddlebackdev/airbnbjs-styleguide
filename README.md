@@ -3229,15 +3229,14 @@ Other Style Guides
     ```
 
   <a name="naming--leading-underscore"></a><a name="22.4"></a>
-  - [23.4](#naming--leading-underscore) Do not use trailing or leading underscores. eslint: [`no-underscore-dangle`](https://eslint.org/docs/rules/no-underscore-dangle.html)
+  - [23.4](#naming--leading-underscore) Do not use trailing underscores. eslint: [`no-underscore-dangle`](https://eslint.org/docs/rules/no-underscore-dangle.html)
 
-    > Why? JavaScript does not have the concept of privacy in terms of properties or methods. Although a leading underscore is a common convention to mean “private”, in fact, these properties are fully public, and as such, are part of your public API contract. This convention might lead developers to wrongly think that a change won’t count as breaking, or that tests aren’t needed. tl;dr: if you want something to be “private”, it must not be observably present.
+    > We changed this "underscores" sub-section to include leading underscores as good form when relevant. Please use a leading underscore to identify properties or methods as private and visa-versa.
 
     ```javascript
     // bad
-    this.__firstName__ = 'Panda';
+    this.firstName__ = 'Panda';
     this.firstName_ = 'Panda';
-    this._firstName = 'Panda';
 
     // good
     this.firstName = 'Panda';
@@ -3246,7 +3245,31 @@ Other Style Guides
     // see https://kangax.github.io/compat-table/es6/#test-WeakMap
     const firstNames = new WeakMap();
     firstNames.set(this, 'Panda');
+
+    // bad, if private
+    onFooClick() { .. }
+    this.foo = 'bar';
+    this.bazInputRef = ref;
+
+    // good, if private
+    _onFooClick() { .. }
+    this._foo = 'bar';
+    this._bazInputRef = ref;
+
+    // bad, if not private
+    _onFooClick() { .. }
+    this._foo = 'bar';
+    this._bazInputRef = ref;
+
+    // good, if not private
+    onFooClick() { .. }
+    this._foo = 'bar';
+    this._bazInputRef = ref;
     ```
+
+    > Why? JavaScript does not have the concept of privacy in terms of properties or methods. Although a leading underscore is a common convention to mean “private”, in fact, these properties are fully public, and as such, are part of your public API contract. This convention might lead developers to wrongly think that a change won’t count as breaking, or that tests aren’t needed. tl;dr: if you want something to be “private”, it must not be observably present.
+
+
 
   <a name="naming--self-this"></a><a name="22.5"></a>
   - [23.5](#naming--self-this) Don’t save references to `this`. Use arrow functions or [Function#bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind).
