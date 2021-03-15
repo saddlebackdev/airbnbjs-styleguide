@@ -23,10 +23,19 @@ module.exports = {
     'consistent-return': 'error',
 
     // specify curly brace conventions for all control statements
-    curly: ['error', 'multi-line'],
+    curly: ['error', 'multi-line'], // multiline
 
     // require default case in switch statements
     'default-case': ['error', { commentPattern: '^no default$' }],
+
+    // Enforce default clauses in switch statements to be last
+    // https://eslint.org/docs/rules/default-case-last
+    // TODO: enable, semver-minor, when eslint v7 is required (which is a major)
+    'default-case-last': 'off',
+
+    // https://eslint.org/docs/rules/default-param-last
+    // TODO: enable, semver-minor, when eslint v6.4 is required (which is a major)
+    'default-param-last': 'off',
 
     // encourages use of dot notation whenever possible
     'dot-notation': ['error', { allowKeywords: true }],
@@ -38,6 +47,11 @@ module.exports = {
     // require the use of === and !==
     // https://eslint.org/docs/rules/eqeqeq
     eqeqeq: ['error', 'always', { null: 'ignore' }],
+
+    // Require grouped accessor pairs in object literals and classes
+    // https://eslint.org/docs/rules/grouped-accessor-pairs
+    // TODO: enable in next major, altho the guide forbids getters/setters anyways
+    'grouped-accessor-pairs': 'off',
 
     // make sure for-in loops have an if statement
     'guard-for-in': 'error',
@@ -55,6 +69,11 @@ module.exports = {
     // disallow lexical declarations in case/default clauses
     // https://eslint.org/docs/rules/no-case-declarations.html
     'no-case-declarations': 'error',
+
+    // Disallow returning value in constructor
+    // https://eslint.org/docs/rules/no-constructor-return
+    // TODO: enable, semver-major
+    'no-constructor-return': 'off',
 
     // disallow division operators explicitly at beginning of regular expression
     // https://eslint.org/docs/rules/no-div-regex
@@ -128,7 +147,7 @@ module.exports = {
     // disallow usage of __iterator__ property
     'no-iterator': 'error',
 
-    // disallow use of labels for anything other then loops and switches
+    // disallow use of labels for anything other than loops and switches
     'no-labels': ['error', { allowLoop: false, allowSwitch: false }],
 
     // disallow unnecessary nested blocks
@@ -163,6 +182,11 @@ module.exports = {
     // disallows creating new instances of String, Number, and Boolean
     'no-new-wrappers': 'error',
 
+    // Disallow \8 and \9 escape sequences in string literals
+    // https://eslint.org/docs/rules/no-nonoctal-decimal-escape
+    // todo: semver-major: enable when v7.14 is required
+    'no-nonoctal-decimal-escape': 'off',
+
     // disallow use of (old style) octal literals
     'no-octal': 'error',
 
@@ -180,6 +204,7 @@ module.exports = {
         'accumulator', // for reduce accumulators
         'e', // for e.returnvalue
         'ctx', // for Koa routing
+        'context', // for Koa routing
         'req', // for Express requests
         'request', // for Express requests
         'res', // for Express responses
@@ -192,7 +217,7 @@ module.exports = {
     // disallow usage of __proto__ property
     'no-proto': 'error',
 
-    // disallow declaring the same variable more then once
+    // disallow declaring the same variable more than once
     'no-redeclare': 'error',
 
     // disallow certain object properties
@@ -312,6 +337,10 @@ module.exports = {
     // Suggest using named capture group in regular expression
     // https://eslint.org/docs/rules/prefer-named-capture-group
     'prefer-named-capture-group': 'off',
+
+    // https://eslint.org/docs/rules/prefer-regex-literals
+    // TODO; enable, semver-minor, once eslint v6.4 is required (which is a major)
+    'prefer-regex-literals': 'off',
 
     // require use of the second argument for parseInt()
     radix: 'error',
