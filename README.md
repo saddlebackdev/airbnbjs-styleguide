@@ -1442,20 +1442,19 @@ Other Style Guides
     ```
 
   <a name="modules--import-extensions"></a>
-  - [10.10](#modules--import-extensions) Do not include JavaScript filename extensions
+  - [10.10](#modules--import-extensions) Do include JavaScript filename extensions
  eslint: [`import/extensions`](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/extensions.md)
-    > Why? Including extensions inhibits refactoring, and inappropriately hardcodes implementation details of the module you're importing in every consumer.
 
     ```javascript
     // bad
-    import foo from './foo.js';
-    import bar from './bar.jsx';
-    import baz from './baz/index.jsx';
-
-    // good
     import foo from './foo';
     import bar from './bar';
     import baz from './baz';
+    
+    // good
+    import foo from './foo.js';
+    import bar from './bar.jsx';
+    import baz from './baz/index.jsx';
     ```
 
 **[⬆ back to top](#table-of-contents)**
